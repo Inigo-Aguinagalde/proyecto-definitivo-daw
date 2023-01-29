@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css"
+    integrity="sha512-YFENbnqHbCRmJt5d+9lHimyEMt8LKSNTMLSaHjvsclnZGICeY/0KYEeiHwD1Ux4Tcao0h60tdcMv+0GljvWyHg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"
+    integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+    integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="js/login.js"></script>
+<link rel="stylesheet" href="css/drag.css"/>
+<script src="js/registre.js"></script>
+<script src="js/drag&drop.js"></script>
+
+
+<body onload="checkIflog()">
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="login" data-bs-target="#signIn">
+        sign in
+    </button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="register" data-bs-target="#signup">
+        sign up
+    </button>
+    <button type="button" class="btn btn-primary d-none" id="logout" onclick="logout()">
+        Logout
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="signIn" tabindex="-1" aria-labelledby="signInLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="signInLabel">Iniciar sesion</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="email" id="email" class="form-control" />
+                            <label class="form-label" for="email">Email address</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="password" class="form-control" />
+                            <label class="form-label" for="password">Password</label>
+                        </div>
+
+                        <!-- 2 column grid layout for inline styling -->
+                        <div class="row mb-4">
+                            <div class="col d-flex justify-content-center">
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="form2Example31"
+                                        checked />
+                                    <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <!-- Simple link -->
+                                <a href="#!">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="button" class="btn btn-primary btn-block mb-4" onclick="checkLogin()">Sign
+                            in</button>
+
+                        <!-- Register buttons -->
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="signup" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="signup">Registro</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <input type="email" id="emailR" class="form-control" />
+                            <label class="form-label" for="emailR">Email address</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="email" id="name" class="form-control" />
+                            <label class="form-label" for="name">Nombre</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="password1" class="form-control" />
+                            <label class="form-label" for="password1">Password</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="password2" class="form-control" />
+                            <label class="form-label" for="password2">Password</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="button" class="btn btn-primary btn-block mb-4" onclick="registre()">Sign
+                            in</button>
+
+                        <!-- Register buttons -->
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-body row d-none" id="total">
+        <h1>Empresas para seleccionar</h1>
+        <div class="col-md-6" id="listaEmpresas">
+
+        </div>
+        <h1>Empresas seleccionadas</h1>
+        <div class="col-md-6"  id="empresaSeleccionadas">
+            <p><button type="button" class="btn btn-primary position-relative align-content-end"
+                    onclick="guardar()">Save</button></p>
+
+        </div>
+        <i class="bi bi-trash position-relative bottom-0 end-0 basura" style="font-size:80px;"></i>
+    </div>
+
+    <div id="valoresBolsa" class="modal-body row">
+
+    </div>
+    <div class="modal fade modal-lg" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:1250px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" oncClick="cerrar()" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="start-date">Start Date:</label>
+                        <input type="text" class="form-control" id="start-date">
+                    </div>
+
+                    <div class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                        <label class="control-label" for="end-date">End Date</label>
+                        <input class="form-control" id="end-date" name="date" />
+
+
+                    </div>
+
+                    <button class="btn btn-primary" type="submit" onclick="llamadaAPIEmpresa()">Guardar</button>
+
+
+                    <div id="canvas">
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+<script src="js/empresas.js"></script>
+<script src="js/empresasSeleccionadas.js"></script>
+
+</html>

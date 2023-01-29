@@ -1,0 +1,6 @@
+
+http://localhost:8000/api/generarDatos?timeunit=day&until=2022-11-30
+
+http://localhost:8000/api/generarDatos?timeunit=hour&until=2023-01-24
+
+http://localhost:8000/api/generarDatos

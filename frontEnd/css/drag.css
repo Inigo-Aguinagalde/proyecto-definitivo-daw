@@ -1,0 +1,18 @@
+#empresaSeleccionadas {
+    background-color: bisque;
+    border-style: solid;
+
+        min-height: 100px;
+        width: 700px;
+
+}
+
+img {
+    width: 20%;
+    height: 30%;
+}
+
+canvas {
+    width: 100% !important;
+    height: 30% !important;
+}

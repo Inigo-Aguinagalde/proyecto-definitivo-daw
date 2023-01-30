@@ -69,13 +69,10 @@ function checkIflog() {
         document.getElementById('total').className = "modal-body row d-none"
         document.getElementById('valoresBolsa').className = "modal-body row d-none"
     } else {
-
-
-
-
         document.getElementById('login').className = "btn btn-primary d-none"
         document.getElementById('register').className = "btn btn-primary d-none"
         document.getElementById('logout').className = "btn btn-primary"
         document.getElementById('total').className = "modal-body row"
+    
     }
 }

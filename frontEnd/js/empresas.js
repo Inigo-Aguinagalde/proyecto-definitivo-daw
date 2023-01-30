@@ -16,7 +16,7 @@ if (localStorage.getItem("bolsa") === null) {
     sSeleccionadas = "";
     sSalida = "";
     select.forEach(element => {
-  
+
         empresas = empresas.filter(e => e !== element);
         sSeleccionadas += `<img src="../img/${element}.png" id="${element}"class="img-thumbnail p-2 empresaSeleccionada" alt="${element}">`
     });
@@ -35,14 +35,15 @@ if (localStorage.getItem("bolsa") === null) {
 
 
 
+
 function guardar() {
     seleccionadas = document.getElementById("empresaSeleccionadas").getElementsByTagName('img');
-    prueba = document.getElementById("empresaSeleccionadas")
+
 
     localStorage.removeItem('bolsa');
     seleccionadas = Object.entries(seleccionadas)
     let vacio;
-    if(seleccionadas.length ==0){
+    if (seleccionadas.length == 0) {
         vacio = true;
         alert("tienes que elegir al menos una empresa")
     }
@@ -56,17 +57,17 @@ function guardar() {
     });
     if (empre.length != 0) {
         localStorage.setItem('bolsa', empre);
-    
+
 
     }
-    if(!vacio){
+    if (!vacio) {
         document.getElementById('total').className = 'modal-body row d-none'
         generarSeleccionadas(empre)
     }
 
 
 
-   
+
 
 
 }

@@ -2,6 +2,8 @@ function opcines() {
     clearInterval(intervalId)
     document.getElementById('valoresBolsa').className = 'modal-body row d-none'
     document.getElementById('total').className = 'modal-body row'
+    changeClass();
+
 }
 
 function primeraLLamada(obj) {
@@ -43,21 +45,21 @@ function comprobarEmprsas(response, obj) {
     let error = false;
     let jsonOk = Object.keys(response)[0]
     if (jsonOk == 'status') {
-        if(response['status'].includes('expired')==true){
+        if (response['status'].includes('expired') == true) {
             alert("el token ha expirado por favor vuelva a hacer log in")
             localStorage.removeItem('token');
             localStorage.removeItem('login');
             checkIflog();
-        }else if(response['status'.includes('invalid')==true]){
+        } else if (response['status'.includes('invalid') == true]) {
             alert("el token no es valido")
             localStorage.removeItem('token');
-        }else{
+        } else {
             alert("no se ha encontrado el token, por favor cuemprueba si ha iniciado sesion o esta regristado")
             localStorage.removeItem('token');
             localStorage.removeItem('login');
             checkIflog();
         }
-        
+
     }
 
     if (!error) {
@@ -209,7 +211,7 @@ function llamadaAPIEmpresa() {
 
 function grafico(data) {
     let datos = [];
-    
+
 
     let reducedData = [];
     let prevTimestamp;

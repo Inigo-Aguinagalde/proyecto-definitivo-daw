@@ -2,7 +2,7 @@ function opcines() {
     clearInterval(intervalId)
     document.getElementById('valoresBolsa').className = 'modal-body row d-none'
     document.getElementById('total').className = 'modal-body row'
-    changeClass();
+    changeClass("opciones");
 
 }
 

@@ -48,14 +48,16 @@ $(document).ready(function () {
 })
 
 function changeClass(id) {
-    document.getElementById(id).className = 'img-thumbnail p-2 empresaSeleccionada ui-draggable ui-draggable-handle'
+    if(id != "opciones"){
+        document.getElementById(id).className = 'img-thumbnail p-2 empresaSeleccionada ui-draggable ui-draggable-handle'
+    }
+    
     var imgs = $('#empresaSeleccionadas img');
     let imagenes = [];
     for (let i = 0; i < imgs.length; i++) {
         imagenes[i] = imgs[i].id
     }
 
-    console.log(imagenes);
 
     sSeleccionadas = "";
     imagenes.forEach(element => {

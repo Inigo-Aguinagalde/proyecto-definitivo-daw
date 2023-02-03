@@ -22,17 +22,19 @@ function registre() {
         alert("las contraseñas no coinciden")
         error = true;
     }
+    
 
     if (!error) {
+        
         const options = {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ name: nombre, email: email, password: password1 })
         };
 
-        fetch('http://172.0.0.1:1235/api/register', options)
+        fetch('http://127.0.0.1:1235/api/register', options)
             .then(response => response.json())
-            .then(response => console.log(alert("el usuario se ha creado correctamente")))
+            .then(response =>alert("el usuario se ha creado correctamente"))
             .catch(err => console.log(err));
     }
 

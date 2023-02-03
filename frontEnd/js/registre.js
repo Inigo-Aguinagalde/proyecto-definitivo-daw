@@ -30,7 +30,7 @@ function registre() {
             body: new URLSearchParams({ name: nombre, email: email, password: password1 })
         };
 
-        fetch('http://127.0.0.1:8000/api/register', options)
+        fetch('http://172.0.0.1:1235/api/register', options)
             .then(response => response.json())
             .then(response => console.log(alert("el usuario se ha creado correctamente")))
             .catch(err => console.log(err));

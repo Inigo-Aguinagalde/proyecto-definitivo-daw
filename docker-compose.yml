@@ -2,51 +2,72 @@ version: '3'
 services:
   frontend:
     image: httpd:2.4
-    #command: /bin/bash -c "apt-get update && apt-get install iputils-ping -y"
     ports:
       - 1234:80
     networks:
       - proyecto
     volumes:
       - ./frontEnd:/usr/local/apache2/htdocs/
-      
+  
   backend:
     build: ./backend
-    #command: /bin/bash -c "apt-get update && apt-get install iputils-ping -y"
-
     ports:
       - 1235:80
     networks:
       - proyecto
-    extra_hosts:
-      - "backend:127.0.0.1"
-    volumes:
-      - ./backend:/var/www/html/
-    depends_on:
-      - db
-  nginx:
-    image: nginx
-    #command: /bin/bash -c "apt-get update && apt-get install iputils-ping -y"
+      
+  # backend:
+  #   build: ./backend
 
-    ports:
-      - 1236:80
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    networks: 
-      - proyecto
-    depends_on:
-      - backend
-      - frontend
+
+  #   ports:
+  #     - 1235:80
+  #   networks:
+  #     - proyecto
+  #   extra_hosts:
+  #     - "backend:127.0.0.1"
+  #   volumes:
+  #     - ./backend:/var/www/html/
+  #   depends_on:
+  #     - db
+  # nginx:
+  #   image: nginx
+
+
+  #   ports:
+  #     - 1236:80
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #   networks: 
+  #     - proyecto
+  #   depends_on:
+  #     - backend
+  #     - frontend
   db:
     image: mysql:latest 
     environment:
       MYSQL_DATABASE: laravel
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  
+      MYSQL_USER: user
+
     volumes:
        - ./db:/docker-entrypoint-initdb.d
 
     networks:
       - proyecto
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "1237:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    networks:
+      - proyecto
+    depends_on:
+      - db
 
 networks:
   proyecto:

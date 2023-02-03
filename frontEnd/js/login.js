@@ -2,14 +2,12 @@ function checkLogin() {
     email = document.getElementById('email').value;
     password = document.getElementById('password').value;
 
-
-
     const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ email: email, password: password })
     };
-    fetch('http://127.0.0.1:8000/api/login', options)
+    fetch('http://127.0.0.1:1235/api/login', options)
         .then(response => response.json())
         .then(response => token(response))
 

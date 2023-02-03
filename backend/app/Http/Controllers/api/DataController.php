@@ -24,7 +24,7 @@ class DataController extends Controller
     {
 
         $model = new InsertData();
-        error_log("estoy en crearDatos");
+    
 
         $model->getData($request->timeunit, $request->until);
     }
@@ -45,6 +45,7 @@ class DataController extends Controller
         $companiaIDs = json_decode(json_encode($companiaIDs), true);
         $datos = array();
         foreach ($companiaIDs as $element) {
+        
 
             $datos[$element['name']] = DB::table('bolsa')->where('compañia_id', $element['id'])->latest()->first();
         }
@@ -82,9 +83,7 @@ class DataController extends Controller
     public function show(Request $request)
     {
 
-  
-
-        $name = strtoupper($request->name);
+          $name = strtoupper($request->name);
 
         $company = json_decode(json_encode(DB::table('compañias')->where('name', '=', $name)->get()));
 

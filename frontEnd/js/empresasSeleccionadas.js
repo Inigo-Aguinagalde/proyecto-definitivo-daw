@@ -11,7 +11,7 @@ function primeraLLamada(obj) {
     controller.abort();
     const newController = new AbortController();
 
-    fetch('http://127.0.0.1:8000/api/empresas', {
+    fetch('http://127.0.0.1:1235/api/empresas', {   
         method: 'GET',
         signal: newController.signal,
 
@@ -104,7 +104,7 @@ function llamaApiConstante(obj) {
         controller.abort();
         const newController = new AbortController();
 
-        fetch('http://127.0.0.1:8000/api/empresas', {
+        fetch('http://127.0.0.1:1235/api/empresas', {
             method: 'GET',
             signal: newController.signal,
             headers: {
@@ -183,7 +183,7 @@ function llamadaAPIEmpresa() {
     if (!error) {
         controller.abort();
         const newController = new AbortController();
-        fetch(`http://127.0.0.1:8000/api/datos?name=${nombre}&from=${fechaStart}&to=${fechaFn}`, {
+        fetch(`http://127.0.0.1:1235/api/datos?name=${nombre}&from=${fechaStart}&to=${fechaFn}`, {
             method: 'GET',
             signal: newController.signal,
             headers: {
@@ -212,7 +212,7 @@ function llamadaAPIEmpresa() {
 function grafico(data) {
     let datos = [];
 
-
+    console.log(data)
     let reducedData = [];
     let prevTimestamp;
 

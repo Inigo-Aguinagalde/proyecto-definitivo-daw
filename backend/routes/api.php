@@ -37,10 +37,3 @@ Route::middleware('jwt')->group((function(){
     Route::get('/datos', [DataController::class, 'show']);
 }));
 
-
-Route::controller(DataController::class)->group(function () {
-   
-  
-   
-  
-});

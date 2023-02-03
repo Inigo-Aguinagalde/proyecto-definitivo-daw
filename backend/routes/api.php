@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\DataController;
+use App\Http\Controllers\DataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Models\InsertData;
 
 /*
 |--------------------------------------------------------------------------

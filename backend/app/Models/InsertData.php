@@ -38,7 +38,7 @@ class InsertData extends Model
     
         set_time_limit(60000);
 
-        $companiaIDs = DB::table('compañias')->pluck('id');
+        $companiaIDs = DB::table('companias')->pluck('id');
        
         foreach ($companiaIDs as $element) {
         

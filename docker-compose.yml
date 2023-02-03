@@ -16,22 +16,7 @@ services:
     networks:
       - proyecto
       
-  # backend:
-  #   build: ./backend
 
-
-  #   ports:
-  #     - 1235:80
-  #   networks:
-  #     - proyecto
-  #   extra_hosts:
-  #     - "backend:127.0.0.1"
-  #   volumes:
-  #     - ./backend:/var/www/html/
-  #   depends_on:
-  #     - db
-  # nginx:
-  #   image: nginx
 
 
   #   ports:
@@ -48,8 +33,9 @@ services:
     environment:
       MYSQL_DATABASE: laravel
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  
-      MYSQL_USER: user
-
+    
+    ports:
+      - 3306:3306
     volumes:
        - ./db:/docker-entrypoint-initdb.d
 

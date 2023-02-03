@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\DataResource;
-use App\Models\Compañias;
+
 use App\Models\InsertData;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\DB;
 class DataController extends Controller
 {
 
-
-    public function __construct()
-    {
-        //$this->middleware('auth:api');
-    }
 
     public function crearDatos(Request $request)
     {
@@ -41,7 +36,7 @@ class DataController extends Controller
         $model->getData(null, null);
 
 
-        $companiaIDs = DB::table('compañias')->get();
+        $companiaIDs = DB::table('companias')->get();
         $companiaIDs = json_decode(json_encode($companiaIDs), true);
         $datos = array();
         foreach ($companiaIDs as $element) {
@@ -85,7 +80,7 @@ class DataController extends Controller
 
           $name = strtoupper($request->name);
 
-        $company = json_decode(json_encode(DB::table('compañias')->where('name', '=', $name)->get()));
+        $company = json_decode(json_encode(DB::table('companias')->where('name', '=', $name)->get()));
 
         if (isset($request->from)) {
             $from = $request->from;

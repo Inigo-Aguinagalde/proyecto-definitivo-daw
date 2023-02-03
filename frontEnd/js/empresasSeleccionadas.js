@@ -212,7 +212,7 @@ function llamadaAPIEmpresa() {
 function grafico(data) {
     let datos = [];
 
-    console.log(data)
+    
     let reducedData = [];
     let prevTimestamp;
 
@@ -225,7 +225,7 @@ function grafico(data) {
         }
         prevTimestamp = currentTimestamp;
     }
-    console.log(reducedData);
+    
 
     reducedData.forEach(function (item, index) {
 
@@ -236,7 +236,7 @@ function grafico(data) {
 
 
 
-    console.log(datos)
+
     const chart = Highcharts.stockChart('canvas', {
         chart: {
             height: 400

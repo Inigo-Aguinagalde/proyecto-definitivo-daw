@@ -11,7 +11,7 @@ function primeraLLamada(obj) {
     controller.abort();
     const newController = new AbortController();
 
-    fetch('http://127.0.0.1:1235/api/empresas', {   
+    fetch('http://127.0.0.1:1235/api/empresas', {
         method: 'GET',
         signal: newController.signal,
 
@@ -135,18 +135,28 @@ function generarSeleccionadas(obj) {
     document.getElementById('valoresBolsa').className = 'modal-body row'
     var seletc = `
     <header>
-    <button onclick="opcines()">Opciones</button>
+    <button class="btn btn-success pull-right" onclick="opcines()">Opciones</button>
     </header>
     <br>
 `
-
+    let malas = ['inditex', 'cellnex', 'ferrovial', 'santander', 'naturgy']
     sSalida = ""
-
+    let salto = "<br><br><br>"
+    
     obj.forEach(element => {
-        sSalida += `<div id="${element}" class="col-md-6" >`
-        sSalida += `<p><img src="../img/${element}.png" id="${element}" onclick="gaurdarNombre(this)" class="img-thumbnail p-2 empresa" data-bs-toggle="modal" data-bs-target="#Modal" alt="${element}"></p>`
-        sSalida += `<h2 id="coticacion${element}">~~</h2>`
+        sSalida += `<div id="${element}" class="card" style="width: 18rem; background-color: #ADD8E6" data-bs-toggle="modal" data-bs-target="#Modal" onclick="gaurdarNombre(this)">`
+        if (malas.includes(element)) {
+            sSalida += `<p><img src="../img/${element}.png" style="width: auto; height: 150%;background-color: #ADD8E6;" id="${element}"  class="img-thumbnail p-2 empresa"  alt="${element}"></p>`
+            sSalida += salto;
+        } else {
+            sSalida += `<p><img src="../img/${element}.png" style="width: auto;background-color: #ADD8E6;" id="${element}"  class="img-thumbnail p-2 empresa"  alt="${element}"></p>`
+
+        }
+
+
+        sSalida += `<div class="card-body"><h2 id="coticacion${element}">~~</h2></div>`
         sSalida += `</div>`
+        estilo = "auto"
     });
 
     seletc += sSalida;
@@ -212,7 +222,7 @@ function llamadaAPIEmpresa() {
 function grafico(data) {
     let datos = [];
 
-    
+
     let reducedData = [];
     let prevTimestamp;
 
@@ -225,15 +235,13 @@ function grafico(data) {
         }
         prevTimestamp = currentTimestamp;
     }
-    
+
 
     reducedData.forEach(function (item, index) {
 
         datos[index] = [item.date, item.euros]
 
-
     });
-
 
 
 

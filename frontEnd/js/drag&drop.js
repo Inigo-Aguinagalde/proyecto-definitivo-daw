@@ -58,7 +58,6 @@ function changeClass(id) {
         imagenes[i] = imgs[i].id
     }
 
-
     sSeleccionadas = "";
     imagenes.forEach(element => {
 
@@ -76,10 +75,7 @@ function changeClass(id) {
             deleteImg = "";
             deleteImg = this;
 
-
         }
     });
-
-
 
 }

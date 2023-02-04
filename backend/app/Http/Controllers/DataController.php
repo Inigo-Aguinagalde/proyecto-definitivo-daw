@@ -78,10 +78,8 @@ class DataController extends Controller
     public function show(Request $request)
     {
 
-          $name = strtoupper($request->name);
-
+        $name = strtoupper($request->name);
         $company = json_decode(json_encode(DB::table('companias')->where('name', '=', $name)->get()));
-
         if (isset($request->from)) {
             $from = $request->from;
         } else {
@@ -96,8 +94,7 @@ class DataController extends Controller
 
         $from = Carbon::parse($from);
         $to = Carbon::parse($to);
-        error_log($from);
-        error_log($to);
+
         if($to->eq($from)){
             $bolsa = InsertData::select('*')->where('compañia_id', $company[0]->id,)->whereDate('created_at', $to)->get();
                     

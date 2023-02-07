@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 
 
-class compañiasSeeder extends Seeder
+class companiasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,52 +18,52 @@ class compañiasSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'INDITEX',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'SANTANDER',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'BBVA',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'NATURGY',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'CELLNEX',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'CAIXABANK',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'TELEFONICA',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'REPSOL',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'FERROVIAL',
         ]);
 
-        DB::table('compañias')->insert([
+        DB::table('companias')->insert([
             'id' => Str::uuid()->toString(),
             'name' => 'IBERDROLA',
         ]);

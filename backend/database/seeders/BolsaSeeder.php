@@ -16,7 +16,7 @@ class BolsaSeeder extends Seeder
      */
     public function run()
     {
-        $user = DB::table('compañias')->where('name', '=', 'INDITEX')->get();
+        $user = DB::table('companias')->where('name', '=', 'INDITEX')->get();
 
 
         DB::table('bolsa')->insert([
@@ -27,7 +27,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'SANTANDER')->get();
+        $user = DB::table('companias')->where('name', '=', 'SANTANDER')->get();
 
 
         DB::table('bolsa')->insert([
@@ -38,7 +38,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'BBVA')->get();
+        $user = DB::table('companias')->where('name', '=', 'BBVA')->get();
 
 
         DB::table('bolsa')->insert([
@@ -49,7 +49,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'NATURGY')->get();
+        $user = DB::table('companias')->where('name', '=', 'NATURGY')->get();
 
 
         DB::table('bolsa')->insert([
@@ -60,7 +60,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'CELLNEX')->get();
+        $user = DB::table('companias')->where('name', '=', 'CELLNEX')->get();
 
 
         DB::table('bolsa')->insert([
@@ -71,7 +71,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'CAIXABANK')->get();
+        $user = DB::table('companias')->where('name', '=', 'CAIXABANK')->get();
 
 
         DB::table('bolsa')->insert([
@@ -82,7 +82,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'TELEFÓNICA')->get();
+        $user = DB::table('companias')->where('name', '=', 'TELEFÓNICA')->get();
 
 
         DB::table('bolsa')->insert([
@@ -93,7 +93,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'REPSOL')->get();
+        $user = DB::table('companias')->where('name', '=', 'REPSOL')->get();
 
 
         DB::table('bolsa')->insert([
@@ -104,7 +104,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'FERROVIAL')->get();
+        $user = DB::table('companias')->where('name', '=', 'FERROVIAL')->get();
 
 
         DB::table('bolsa')->insert([
@@ -115,7 +115,7 @@ class BolsaSeeder extends Seeder
             'compañia_id' => $user[0]->id,
         ]);
 
-        $user = DB::table('compañias')->where('name', '=', 'IBERDROLA')->get();
+        $user = DB::table('companias')->where('name', '=', 'IBERDROLA')->get();
 
 
         DB::table('bolsa')->insert([

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bolsa ibex35</title>
 
 </head>
 <link rel="shortcut icon" href="http://localhost:1234/favicon.ico">
@@ -28,10 +28,12 @@
     integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script src="js/login.js"></script>
-<link rel="stylesheet" href="css/drag.css"/>
+<link rel="stylesheet" href="css/drag.css" />
 <script src="js/registre.js"></script>
 <script src="js/drag&drop.js"></script>
 
@@ -83,17 +85,20 @@
                                 </div>
                             </div>
 
-                            <div class="col">
-                                <!-- Simple link -->
-                                <a href="#!">Forgot password?</a>
-                            </div>
+
                         </div>
 
-                        <!-- Submit button -->
-                        <button type="button" class="btn btn-primary btn-block mb-4" onclick="checkLogin()">Sign
-                            in</button>
+
 
                         <!-- Register buttons -->
+                        <div class="text-center">
+                            <button class="btn btn-primary" data-bs-toggle="modal" id="register"
+                                data-bs-target="#signup"><a href="#!"></a>Registre</button>
+                            <!-- Submit button -->
+                            <button type="button" class="btn btn-primary" onclick="checkLogin()">Sign
+                                in</button>
+                        </div>
+
 
                     </form>
                 </div>
@@ -140,6 +145,7 @@
 
                         <!-- Register buttons -->
 
+
                     </form>
                 </div>
 
@@ -154,7 +160,7 @@
 
         </div>
         <h1>Empresas seleccionadas</h1>
-        <div class="col-md-6"  id="empresaSeleccionadas">
+        <div class="col-md-6" id="empresaSeleccionadas">
             <p><button type="button" class="btn btn-primary position-relative align-content-end"
                     onclick="guardar()">Save</button></p>
 

@@ -24,12 +24,12 @@ class Kernel extends ConsoleKernel
     {
 
 
-        if (!Schema::hasTable('compañias')) {
-            Schema::create('compañias', function (Blueprint $table) {
+        if (!Schema::hasTable('companias')) {
+            Schema::create('companias', function (Blueprint $table) {
                 $table->uuid('id')->primary();
                 $table->string('name');
             });
-            $schedule->command('db:seed --class=compañiasSeeder');
+            $schedule->command('db:seed --class=companiasSeeder');
             $schedule->command('migrate');
         };
 
@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
             Schema::table('bolsa', function (Blueprint $table) {
                 $table->foreign('compañia_id')
                     ->references('id')
-                    ->on('compañias')
+                    ->on('companias')
                     ->onDelete('cascade');
             });
             $schedule->command('db:seed --class=BolsaSeeder');

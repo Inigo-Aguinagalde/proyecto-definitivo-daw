@@ -11,7 +11,7 @@ function primeraLLamada(obj) {
     controller.abort();
     const newController = new AbortController();
 
-    fetch('http://127.0.0.1:1235/api/empresas', {
+    fetch('http://hz114486:1235/api/empresas', {
         method: 'GET',
         signal: newController.signal,
 
@@ -49,14 +49,17 @@ function comprobarEmprsas(response, obj) {
             alert("el token ha expirado por favor vuelva a hacer log in")
             localStorage.removeItem('token');
             localStorage.removeItem('login');
+            clearInterval(intervalId)
             checkIflog();
         } else if (response['status'.includes('invalid') == true]) {
             alert("el token no es valido")
+            clearInterval(intervalId)
             localStorage.removeItem('token');
         } else {
-            alert("no se ha encontrado el token, por favor cuemprueba si ha iniciado sesion o esta regristado")
+            alert("no se ha encontrado el token, por favor comprueba si ha iniciado sesion o esta regristado")
             localStorage.removeItem('token');
             localStorage.removeItem('login');
+            clearInterval(intervalId)
             checkIflog();
         }
 
@@ -72,6 +75,7 @@ function comprobarEmprsas(response, obj) {
             let variacion = response[0][element].variacion
             element = element.toLowerCase();
             variacion = variacion.toString();
+            coticacion = Math.round(coticacion * 100) / 100;
             coticacion += " €"
 
             if (variacion.includes("-") == true) {
@@ -104,7 +108,7 @@ function llamaApiConstante(obj) {
         controller.abort();
         const newController = new AbortController();
 
-        fetch('http://127.0.0.1:1235/api/empresas', {
+        fetch('http://hz114486:1235/api/empresas', {
             method: 'GET',
             signal: newController.signal,
             headers: {
@@ -136,13 +140,15 @@ function generarSeleccionadas(obj) {
     var seletc = `
     <header>
     <button class="btn btn-success pull-right" onclick="opcines()">Opciones</button>
+    <br>
+    <br>
     </header>
     <br>
 `
     let malas = ['inditex', 'cellnex', 'ferrovial', 'santander', 'naturgy']
     sSalida = ""
     let salto = "<br><br><br>"
-    
+
     obj.forEach(element => {
         sSalida += `<div id="${element}" class="card" style="width: 18rem; background-color: #ADD8E6" data-bs-toggle="modal" data-bs-target="#Modal" onclick="gaurdarNombre(this)">`
         if (malas.includes(element)) {
@@ -193,7 +199,7 @@ function llamadaAPIEmpresa() {
     if (!error) {
         controller.abort();
         const newController = new AbortController();
-        fetch(`http://127.0.0.1:1235/api/datos?name=${nombre}&from=${fechaStart}&to=${fechaFn}`, {
+        fetch(`http://hz114486:1235/api/datos?name=${nombre}&from=${fechaStart}&to=${fechaFn}`, {
             method: 'GET',
             signal: newController.signal,
             headers: {
@@ -221,34 +227,24 @@ function llamadaAPIEmpresa() {
 
 function grafico(data) {
     let datos = [];
+    console.log(data['data'].lenght)
 
 
-    let reducedData = [];
-    let prevTimestamp;
-
-    for (let i = 0; i < data['data'].length; i++) {
-        let currentTimestamp = new Date(data['data'][i].date);
-        let currentHour = currentTimestamp.getUTCHours();
-
-        if (!prevTimestamp || prevTimestamp.getUTCHours() !== currentHour) {
-            reducedData.push(data['data'][i]);
+    data['data'].forEach(function (item, index) {
+        if (index < 1000) {
+            let date = new Date(item.date)
+            datos[index] = [date, item.euros]
         }
-        prevTimestamp = currentTimestamp;
-    }
 
-
-    reducedData.forEach(function (item, index) {
-
-        datos[index] = [item.date, item.euros]
 
     });
-
-
 
     const chart = Highcharts.stockChart('canvas', {
         chart: {
             height: 400
         },
+
+       
 
         title: {
             text: `Grafico de ${nombre}`
@@ -258,7 +254,9 @@ function grafico(data) {
             selected: 1
         },
 
+
         series: [{
+
             name: nombre,
             data: datos,
             type: 'area',

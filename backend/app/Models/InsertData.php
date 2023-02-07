@@ -67,13 +67,16 @@ class InsertData extends Model
                     }
                     $variacion = round($variacion,2);
                     $euro = round($euro,2);
-                    DB::table('bolsa')->insert([
-                        'id' => Str::uuid()->toString(),
-                        'created_at' =>  $dt,
-                        'variacion' => $variacion,
-                        'Euros' => $euro,
-                        'compañia_id' => $element,
-                    ]);
+                    if($datos->created_at != $dt){
+                        DB::table('bolsa')->insert([
+                            'id' => Str::uuid()->toString(),
+                            'created_at' =>  $dt,
+                            'variacion' => $variacion,
+                            'Euros' => $euro,
+                            'compañia_id' => $element,
+                        ]);
+                    }
+                    
                 }
                 $dt = $this->addToDate($dt, $timeunit);
             }

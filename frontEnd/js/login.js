@@ -7,7 +7,7 @@ function checkLogin() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ email: email, password: password })
     };
-    fetch('http://127.0.0.1:1235/api/login', options)
+    fetch('http://hz114486:1235/api/login', options)
         .then(response => response.json())
         .then(response => token(response))
 
@@ -76,6 +76,7 @@ function checkIflog() {
         document.getElementById('logout').className = "btn btn-primary pull-right d-none"
         document.getElementById('total').className = "modal-body row d-none"
         document.getElementById('valoresBolsa').className = "modal-body row d-none"
+        $('#signIn').modal('show');
     } else {
         document.getElementById('login').className = "btn btn-primary d-none"
         document.getElementById('register').className = "btn btn-primary d-none"

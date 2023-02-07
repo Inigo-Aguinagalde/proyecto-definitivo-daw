@@ -7,7 +7,7 @@ function checkLogin() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({ email: email, password: password })
     };
-    fetch('http://hz114486:1235/api/login', options)
+    fetch(`http://${ip}:1235/api/login`, options)
         .then(response => response.json())
         .then(response => token(response))
 
@@ -19,8 +19,8 @@ function logout() {
     document.getElementById('login').className = "btn btn-primary"
     document.getElementById('register').className = "btn btn-primary"
     document.getElementById('logout').className = "btn btn-primary pull-right d-none"
-    document.getElementById('total').className = "modal-body row d-none"
-    document.getElementById('valoresBolsa').className = 'modal-body row d-none'
+    document.getElementById('total').className = "container d-none"
+    document.getElementById('valoresBolsa').className = 'container d-none'
     var imgs = $('#empresaSeleccionadas img');
     let imagenes = [];
     for (let i = 0; i < imgs.length; i++) {
@@ -39,7 +39,7 @@ function logout() {
 
 
 function token(response) {
-        
+   
    
     if (response['message'] != "Unauthorized") {
         if (localStorage.getItem("token") === null) {
@@ -58,7 +58,7 @@ function token(response) {
         document.getElementById('login').className = "btn btn-primary d-none"
         document.getElementById('register').className = "btn btn-primary d-none"
         document.getElementById('logout').className = "btn btn-primary pull-right"
-        document.getElementById('total').className = "modal-body row"
+        document.getElementById('total').className = "container"
         localStorage.setItem("login", true)
     } else {
         alert('email o contraseña incorrecto');
@@ -68,20 +68,23 @@ function token(response) {
 
 }
 
-
+var ip;
 function checkIflog() {
     if (localStorage.getItem("login") === null) {
         document.getElementById('login').className = "btn btn-primary"
         document.getElementById('register').className = "btn btn-primary"
         document.getElementById('logout').className = "btn btn-primary pull-right d-none"
-        document.getElementById('total').className = "modal-body row d-none"
-        document.getElementById('valoresBolsa').className = "modal-body row d-none"
+        document.getElementById('total').className = "container d-none"
+        document.getElementById('valoresBolsa').className = "container d-none"
+        ip = location.host;
+
         $('#signIn').modal('show');
     } else {
+        ip = location.host;
         document.getElementById('login').className = "btn btn-primary d-none"
         document.getElementById('register').className = "btn btn-primary d-none"
         document.getElementById('logout').className = "btn btn-primary pull-right"
-        document.getElementById('total').className = "modal-body row"
+        document.getElementById('total').className = "container"
     
     }
 }

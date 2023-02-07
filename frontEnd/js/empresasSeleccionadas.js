@@ -1,7 +1,7 @@
 function opcines() {
     clearInterval(intervalId)
     document.getElementById('valoresBolsa').className = 'modal-body row d-none'
-    document.getElementById('total').className = 'modal-body row'
+    document.getElementById('total').className = 'container'
     changeClass("opciones");
 
 }
@@ -11,7 +11,7 @@ function primeraLLamada(obj) {
     controller.abort();
     const newController = new AbortController();
 
-    fetch('http://hz114486:1235/api/empresas', {
+    fetch(`http://${ip}:1235/api/empresas`, {
         method: 'GET',
         signal: newController.signal,
 
@@ -108,7 +108,7 @@ function llamaApiConstante(obj) {
         controller.abort();
         const newController = new AbortController();
 
-        fetch('http://hz114486:1235/api/empresas', {
+        fetch(`http://${ip}:1235/api/empresas`, {
             method: 'GET',
             signal: newController.signal,
             headers: {
@@ -199,7 +199,7 @@ function llamadaAPIEmpresa() {
     if (!error) {
         controller.abort();
         const newController = new AbortController();
-        fetch(`http://hz114486:1235/api/datos?name=${nombre}&from=${fechaStart}&to=${fechaFn}`, {
+        fetch(`http://${ip}:1235/api/datos?name=${nombre}&from=${fechaStart}&to=${fechaFn}`, {
             method: 'GET',
             signal: newController.signal,
             headers: {
@@ -227,7 +227,6 @@ function llamadaAPIEmpresa() {
 
 function grafico(data) {
     let datos = [];
-    console.log(data['data'].lenght)
 
 
     data['data'].forEach(function (item, index) {

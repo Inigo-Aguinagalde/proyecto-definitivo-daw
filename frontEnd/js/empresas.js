@@ -18,11 +18,11 @@ if (localStorage.getItem("bolsa") === null) {
     select.forEach(element => {
 
         empresas = empresas.filter(e => e !== element);
-        sSeleccionadas += `<img src="../img/${element}.png" id="${element}"class="img-thumbnail p-2 empresaSeleccionada" alt="${element}">`
+        sSeleccionadas += `<img src="../img/${element}.png" id="${element}"class="img-thumbnail p-2 img-fluid empresaSeleccionada" style="background-color: bisque;" alt="${element}">`
     });
 
     empresas.forEach(element => {
-        sSalida += `<img src="../img/${element}.png" id="${element}"class="img-thumbnail empresa" alt="${element}">`
+        sSalida += `<img src="../img/${element}.png" id="${element}"class="img-thumbnail img-fluid empresa" alt="${element}">`
     });
 
     sSeleccionadas += `<p><button type="button" class="btn btn-primary align-content-end save" onclick="guardar()">Save</button></p>`

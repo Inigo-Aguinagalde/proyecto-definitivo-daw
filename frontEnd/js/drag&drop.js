@@ -28,9 +28,8 @@ $(document).ready(function () {
         accept: '.empresaSeleccionada',
         hoverClass: 'hovering',
         drop: function () {
-
+            deleteImg.style ="background-color: #e2eaf3;"
             document.getElementById('listaEmpresas').appendChild(deleteImg);
-
 
         }
     });
@@ -62,7 +61,7 @@ function changeClass(id) {
     imagenes.forEach(element => {
 
         empresas = empresas.filter(e => e !== element);
-        sSeleccionadas += `<img src="../img/${element}.png" id="${element}"class="img-thumbnail p-2 empresaSeleccionada" alt="${element}">`
+        sSeleccionadas += `<img src="../img/${element}.png" id="${element}"class="img-thumbnail p-2 empresaSeleccionada" style="background-color: bisque;" alt="${element}">`
     });
     sSeleccionadas += `<p><button type="button" class="btn btn-primary position-relative align-content-end"
        onclick="guardar()">Save</button></p>`

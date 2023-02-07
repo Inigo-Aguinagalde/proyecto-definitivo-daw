@@ -64,14 +64,16 @@
                     <form>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <input type="email" id="email" class="form-control" />
                             <label class="form-label" for="email">Email address</label>
+                            <input type="email" id="email" class="form-control" />
+                          
                         </div>
 
                         <!-- Password input -->
                         <div class="form-outline mb-4">
-                            <input type="password" autocomplete="on" id="password" class="form-control" />
                             <label class="form-label" for="password">Password</label>
+                            <input type="password" autocomplete="on" id="password" class="form-control" />
+                            
                         </div>
 
                         <!-- 2 column grid layout for inline styling -->
@@ -87,24 +89,16 @@
 
 
                         </div>
-
-
-
-                        <!-- Register buttons -->
-                        <div class="text-center">
-                            <button class="btn btn-primary" data-bs-toggle="modal" id="register"
-                                data-bs-target="#signup"><a href="#!"></a>Registre</button>
-                            <!-- Submit button -->
-                            <button type="button" class="btn btn-primary" onclick="checkLogin()">Sign
-                                in</button>
-                        </div>
-
-
-                    </form>
+                        <button type="button" class="btn btn-primary" onclick="checkLogin()">Sign
+                            in</button>
                 </div>
 
+
+                </form>
             </div>
+
         </div>
+    </div>
     </div>
 
     <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="signup" aria-hidden="true">
@@ -154,18 +148,20 @@
     </div>
 
 
-    <div class="modal-body row d-none" style="width: fit-content;" id="total">
-        <h1>Empresas para seleccionar</h1>
-        <div class="col-md-6" id="listaEmpresas">
+    <div class="container d-none" style="width: fit-content;" id="total">
+        <div class="row">
+            <h1>Empresas para seleccionar</h1>
+            <div class="col" id="listaEmpresas">
 
-        </div>
-        <h1>Empresas seleccionadas</h1>
-        <div class="col-md-6" id="empresaSeleccionadas">
-            <p><button type="button" class="btn btn-primary position-relative align-content-end"
-                    onclick="guardar()">Save</button></p>
+            </div>
+            <h1>Empresas seleccionadas</h1>
+            <div class="col" id="empresaSeleccionadas">
+                <p><button type="button" class="btn btn-primary position-relative align-content-end"
+                        onclick="guardar()">Save</button></p>
 
+            </div>
+            <i class="bi bi-trash position-relative bottom-0 end-0 basura" style="font-size:80px;"></i>
         </div>
-        <i class="bi bi-trash position-relative bottom-0 end-0 basura" style="font-size:80px;"></i>
     </div>
 
     <div id="valoresBolsa" class="modal-body row">
@@ -182,12 +178,12 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="start-date">Start Date:</label>
-                        <input type="text" class="form-control" id="start-date">
+                        <input type="text" class="form-control" id="start-date" autocomplete="off">
                     </div>
 
                     <div class="md-form md-outline input-with-post-icon datepicker" inline="true">
                         <label class="control-label" for="end-date">End Date</label>
-                        <input class="form-control" id="end-date" name="date" />
+                        <input class="form-control" id="end-date" name="date" autocomplete="off" />
 
 
                     </div>

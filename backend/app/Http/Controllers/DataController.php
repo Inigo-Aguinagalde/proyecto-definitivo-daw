@@ -101,7 +101,7 @@ class DataController extends Controller
         } else{
             $to->addDay();
     
-            $bolsa = InsertData::select('*')->where('compañia_id', $company[0]->id)->whereBetween('created_at', [$from, $to])->orderBy('created_at', 'desc')->get();
+            $bolsa = InsertData::select('*')->where('compañia_id', $company[0]->id)->whereBetween('created_at', [$from, $to])->get();
         }
          
         return DataResource::collection($bolsa);

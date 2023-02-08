@@ -223,27 +223,36 @@ function llamadaAPIEmpresa() {
 
 }
 
+$("#Modal").on('hide.bs.modal', function () {
+    if (chart) {
+        chart.destroy();
+    }
+});
 
 
+let chart;
 function grafico(data) {
     let datos = [];
 
 
     data['data'].forEach(function (item, index) {
         if (index < 1000) {
+
             let date = new Date(item.date)
-            datos[index] = [date, item.euros]
+            let fecha = date.getTime();
+            datos[index] = [fecha, item.euros]
         }
 
 
     });
 
-    const chart = Highcharts.stockChart('canvas', {
+
+    chart = Highcharts.stockChart('canvas', {
         chart: {
             height: 400
         },
 
-       
+
 
         title: {
             text: `Grafico de ${nombre}`
@@ -251,6 +260,16 @@ function grafico(data) {
 
         rangeSelector: {
             selected: 1
+        },
+
+
+        xAxis: {
+
+            type: 'datetime',
+            labels: {
+                enabled: true,
+                format: '{value:%d-%m-%Y}',
+            },
         },
 
 

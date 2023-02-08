@@ -18,7 +18,7 @@ class InsertData extends Model
     {
  
         if ($timeunit == null) {
-            $timeunit = 'day';
+            $timeunit = 'hour';
         }
         if ($until == null) {
             $until = Carbon::now();

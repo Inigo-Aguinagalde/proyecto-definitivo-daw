@@ -1,3 +1,4 @@
+//Cuando se clicka el boton opciones oculto todo y vuelvo a mostrar el drag & drop
 function opcines() {
     clearInterval(intervalId)
     document.getElementById('valoresBolsa').className = 'modal-body row d-none'
@@ -40,7 +41,8 @@ function cambiarColor(element) {
 
 }
 
-
+//Compruebo que el token no haya expirado, si el token sigue siendo valido compruebo si la variacion ha sido positiva o negativa
+//y actua de acuerdo a ello, tanbien redondeo el numero que llega
 function comprobarEmprsas(response, obj) {
     let error = false;
     let jsonOk = Object.keys(response)[0]
@@ -94,7 +96,7 @@ function comprobarEmprsas(response, obj) {
 
 
 }
-
+//Llamada cada minuto para sacar el ultimo dato de cada empresa
 var intervalId
 function llamaApiConstante(obj) {
     let primera = true;
@@ -130,7 +132,7 @@ function llamaApiConstante(obj) {
 
 
 }
-
+//Funcion para generar las empreas seleccionas del drag & drop
 function generarSeleccionadas(obj) {
 
     llamaApiConstante(obj);
@@ -170,6 +172,8 @@ function generarSeleccionadas(obj) {
 
 
 }
+
+//funcion para cojer el nombre de la empresa que quiere el grafico
 var nombre;
 function gaurdarNombre(obj) {
     nombre = "";
@@ -179,12 +183,15 @@ function gaurdarNombre(obj) {
     document.getElementById('exampleModalLabel').innerHTML = nombre;
 }
 
+//Funcion que se llama cuando le das a guardar en el modal del grafico
+
 function llamadaAPIEmpresa() {
     let controller = new AbortController();
 
     let fechaFn = document.getElementById('end-date').value;
     let fechaStart = document.getElementById('start-date').value;
     let error = false;
+    //Compruebo que las fechas que hayan escogido sean validas si no el booleano error pasa a ser true
     if (fechaFn < fechaStart) {
         alert("La fecha final no puede ser mayor que la fecha inicial se han cambiado las fechas")
         error = true;
@@ -195,7 +202,7 @@ function llamadaAPIEmpresa() {
     } else {
         document.getElementById('canvas').className = ''
     }
-
+    //Aqui hago una llamada a la api para sacar los datos de la base de datos
     if (!error) {
         controller.abort();
         const newController = new AbortController();
@@ -222,19 +229,19 @@ function llamadaAPIEmpresa() {
     }
 
 }
-
+//Cuando el modal se cierra destruyo el chart que se habia creado para utiliza el grafico
 $("#Modal").on('hide.bs.modal', function () {
     if (chart) {
         chart.destroy();
     }
 });
 
-
+/* Funcion del grafico que recive los datos conseguidos del fetch */
 let chart;
 function grafico(data) {
     let datos = [];
 
-
+    //Proceso los datos para que hightchart pueda leerlos
     data['data'].forEach(function (item, index) {
         if (index < 1000) {
 
@@ -307,16 +314,6 @@ function grafico(data) {
 
 
 }
-
-$('#start-date').datepicker({
-    format: 'yyyy/mm/dd',
-    endDate: new Date()
-});
-$('#end-date').datepicker({
-
-    format: 'yyyy/mm/dd',
-    endDate: new Date()
-});
 
 
 

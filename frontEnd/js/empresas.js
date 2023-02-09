@@ -1,7 +1,7 @@
-
+//Creo un array con las empresas que queremos
 var empresas = ['inditex', 'santander', 'bbva', 'naturgy', 'cellnex', 'caixabank', 'telefonica', 'repsol', 'ferrovial', 'iberdrola']
 
-
+//Cuompruebo si existe en el localstorage el elemento bolsa, si exite creo las imagenes en sus respectivos campos si no creo todas la empresas en las empresas a seleccionar
 if (localStorage.getItem("bolsa") === null) {
     sSalida = "";
     empresas.forEach(element => {
@@ -34,7 +34,8 @@ if (localStorage.getItem("bolsa") === null) {
 
 
 
-
+//Cuando clickas en el boton de save se ejecuta esta funcion que guarda las empreas seleccionas en el localstorage, tambien comprueba que las empresas seleccionas
+// no este vacio despues de eso invoca a la funcion de generarSeleccionadas
 
 function guardar() {
     seleccionadas = document.getElementById("empresaSeleccionadas").getElementsByTagName('img');
@@ -64,10 +65,6 @@ function guardar() {
         document.getElementById('total').className = 'modal-body row d-none'
         generarSeleccionadas(empre)
     }
-
-
-
-
 
 
 }

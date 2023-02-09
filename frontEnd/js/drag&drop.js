@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('.empresa').draggable({
         helper: 'clone',
         drag: function (event, ui) {
-            $('.empresa').width(100);
+
             img = "";
             img = this;
         }

@@ -316,5 +316,17 @@ function grafico(data) {
 }
 
 
+//Estas 2 funciones son necesarias para el datepicker de boostrap
+
+$('#start-date').datepicker({
+    format: 'yyyy/mm/dd',
+    endDate: new Date()
+});
+$('#end-date').datepicker({
+
+    format: 'yyyy/mm/dd',
+    endDate: new Date()
+});
+
 
 
